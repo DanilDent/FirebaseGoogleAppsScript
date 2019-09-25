@@ -6,7 +6,7 @@ namespace Firebase {
     private authToken: string | null = null;
     // tslint:disable-next-line: variable-name
     private _firestore: Firestore.Connection | null = null;
-    constructor(projectId: string, email: string, key: string) {
+    constructor(email: string, key: string, projectId: string) {
       this.projectId = projectId;
       this.email = email;
       this.key = key;
