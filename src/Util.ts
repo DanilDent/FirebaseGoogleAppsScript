@@ -9,15 +9,15 @@ namespace Util {
     export const regexBinary = /[\x00-\x08\x0E-\x1F]/;
 
     // Assumes n is a Number.
-    export function isInt_(n: number) {
+    export function isInt(n: number) {
         return n % 1 === 0;
     }
 
-    export function isNumeric_(val: any) {
+    export function isNumeric(val: any) {
         return Number(parseFloat(val)) === val;
     }
 
-    export function base64EncodeSafe_(toEncode: any): string {
+    export function base64EncodeSafe(toEncode: any): string {
         const encoded = Utilities.base64EncodeWebSafe(toEncode);
         return encoded.replace(/=/g, "");
     }
@@ -25,11 +25,11 @@ namespace Util {
     export function fetchObject_<T>(url: string, options: GoogleAppsScript.URL_Fetch.URLFetchRequestOptions): T {
         const response = UrlFetchApp.fetch(url, options);
         const responseObj: T = JSON.parse(response.getContentText());
-        checkForError_(responseObj);
+        checkForError(responseObj);
         return responseObj;
     }
 
-    export function checkForError_(responseObj: any) {
+    export function checkForError(responseObj: any) {
         // tslint:disable-next-line: no-string-literal
         if (responseObj["error"]) {
             // tslint:disable-next-line: no-string-literal
@@ -41,14 +41,14 @@ namespace Util {
             throw new Error(responseObj[0]["error"]["message"]);
         }
     }
-    export function getCollectionFromPath_(path: string) {
-        return getColDocFromPath_(path, false);
+    export function getCollectionFromPath(path: string) {
+        return getColDocFromPath(path, false);
     }
-    export function getDocumentFromPath_(path: string) {
-        return getColDocFromPath_(path, true);
+    export function getDocumentFromPath(path: string) {
+        return getColDocFromPath(path, true);
     }
 
-    export function getColDocFromPath_(path: string, isDocument: any) {
+    export function getColDocFromPath(path: string, isDocument: any) {
         // Path defaults to empty string if it doesn't exist. Remove insignificant slashes.
         const splitPath = (path || "").split("/").filter((p) => {
             return p;

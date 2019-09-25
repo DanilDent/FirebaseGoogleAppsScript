@@ -42,7 +42,7 @@ class FirebaseRequest {
      * @param path the path to send the request to
      * @returns this request to be chained
      */
-    public get(path: string) {
+    public get(path: string): any {
         return this.method("get", path);
     }
 
@@ -53,7 +53,7 @@ class FirebaseRequest {
      * @param obj Optional object to send as payload
      * @returns this request to be chained
      */
-    public post(path: string | null = null, obj?: any) {
+    public post(path: string | null = null, obj?: any): any {
         if (obj) {
             this.payload(obj);
         }
@@ -67,7 +67,7 @@ class FirebaseRequest {
      * @param obj Optional object to send as payload
      * @returns this request to be chained
      */
-    public patch(path: string, obj: any) {
+    public patch(path: string, obj: any): any {
         if (obj) {
             this.payload(obj);
         }
@@ -97,7 +97,7 @@ class FirebaseRequest {
         this.options.payload = JSON.stringify(obj);
     }
 
-    private method(type: any, path: string | null) {
+    private method(type: any, path: string | null): any {
         this.options.method = type;
         return Util.fetchObject_(this.url + (path || "") + this.queryString, this.options);
     }

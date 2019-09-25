@@ -51,13 +51,13 @@ namespace OAuth {
             scope: "https://www.googleapis.com/auth/datastore",
         };
 
-        const jwtHeaderBase64 = Util.base64EncodeSafe_(JSON.stringify(jwtHeader));
-        const jwtClaimBase64 = Util.base64EncodeSafe_(JSON.stringify(jwtClaim));
+        const jwtHeaderBase64 = Util.base64EncodeSafe(JSON.stringify(jwtHeader));
+        const jwtClaimBase64 = Util.base64EncodeSafe(JSON.stringify(jwtClaim));
 
         const signatureInput = jwtHeaderBase64 + "." + jwtClaimBase64;
 
         const signature = Utilities.computeRsaSha256Signature(signatureInput, key);
-        const encodedSignature = Util.base64EncodeSafe_(signature);
+        const encodedSignature = Util.base64EncodeSafe(signature);
 
         return signatureInput + "." + encodedSignature;
     }
