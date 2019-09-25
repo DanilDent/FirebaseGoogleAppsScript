@@ -1,17 +1,7 @@
 /* eslint no-unused-vars: ["error", { "varsIgnorePattern": "_|Fire|get" }] */
 /* globals FirestoreRequest_, createDocument_, deleteDocument_, getAuthToken_, getDocument_, getDocumentIds_, query_, updateDocument_ */
 
-/**
- * Get an object that acts as an authenticated interface with a Firestore project.
- *
- * @param {string} email the user email address (for authentication)
- * @param {string} key the user private key (for authentication)
- * @param {string} projectId the Firestore project ID
- * @return {object} an authenticated interface with a Firestore project
- */
-function getFirestore (email, key, projectId) {
-  return new Firestore(email, key, projectId)
-}
+
 
 /**
  * An object that acts as an authenticated interface with a Firestore project.

@@ -1,0 +1,21 @@
+{
+  "name": "firebase-google-apps-script",
+  "version": "1.0.0",
+  "description": "Firebase API for an Apps Script Project",
+  "main": "src/Code.js",
+  "types": "type.d.ts",
+  "scripts": {
+    "test": "test",
+    "status": "clasp status",
+    "push": "clasp push",
+    "watch": "clasp push --watch"
+  },
+  "author": "Kelly Ferrone",
+  "license": "ISC",
+  "devDependencies": {
+    "@google/clasp": "^2.3.0",
+    "@types/google-apps-script": "0.0.31",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.3"
+  }
+}
