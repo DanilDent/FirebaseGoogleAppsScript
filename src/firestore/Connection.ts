@@ -5,7 +5,7 @@ namespace Firestore {
     constructor(authToken: string, projectId: string) {
       this.authToken = authToken;
       const HOST: string = "https://firestore.googleapis.com";
-      const PATH: string = "/v1beta1/projects/" + projectId + "/databases/(default)/documents/";
+      const PATH: string = "/v1/projects/" + projectId + "/databases/(default)/documents/";
       this.baseUrl = HOST + PATH;
     }
 
