@@ -11,8 +11,8 @@ namespace OAuth {
      * @param authUrl the authorization url
      * @returns {string} the access token needed for making future requests
      */
-    export function getAuthToken(email: string, key: string, authUrl: string): string {
-        const jwt = createJwt(email, key, authUrl);
+    export function getAuthToken(email: string, key: string, authUrl: string, scope: string): string {
+        const jwt = createJwt(email, key, authUrl, scope);
 
         const options = {
             payload: "grant_type=" +
@@ -31,7 +31,7 @@ namespace OAuth {
      * @param authUrl the authorization url
      * @returns {string} JWT to utilize
      */
-    function createJwt(email: string, key: string, authUrl: string): string {
+    function createJwt(email: string, key: string, authUrl: string, scope: string): string {
         const jwtHeader = {
             alg: "RS256",
             typ: "JWT",
@@ -48,7 +48,7 @@ namespace OAuth {
             exp: oneHourFromNowSeconds,
             iat: nowSeconds,
             iss: email,
-            scope: "https://www.googleapis.com/auth/datastore",
+            scope,
         };
 
         const jwtHeaderBase64 = Util.base64EncodeSafe(JSON.stringify(jwtHeader));

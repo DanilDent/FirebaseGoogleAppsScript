@@ -7,6 +7,5 @@
  * @return {object} an authenticated interface with a Firestore project
  */
 function getFirebase(email: string, key: string, projectId: string): Firebase.Connection {
-  const firebase: Firebase.Connection = new Firebase.Connection(email, key, projectId);
-  return firebase.initialize();
+  return new Firebase.Connection(email, key, projectId);
 }

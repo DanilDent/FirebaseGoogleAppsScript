@@ -23,3 +23,15 @@ function getTestPosts() {
   Logger.log(posts);
   return posts;
 }
+
+function getTestRemoteConfig() {
+  const firebase = getTestFirebase();
+  const remoteConfig = firebase.remoteConfig();
+  let config;
+  try {
+    config = remoteConfig.get();
+  } catch (error) {
+    Logger.log(error);
+  }
+  Logger.log(config);
+}
