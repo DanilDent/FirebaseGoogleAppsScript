@@ -24,16 +24,20 @@ async function getVersions(scriptId) {
 }
 
 async function createVersion(scriptId, versionNumber, description) {
-  return await script.projects.versions.create({
+  console.log(`Creating version for @${versionNumber}`);
+  const version = await script.projects.versions.create({
     scriptId,
     requestBody: {
       versionNumber,
       description,
     },
   });
+  if (version.status !== 200) throw new Error('Could not create new version');
+  return version.data;
 }
 
 async function createDeployment(scriptId, versionNumber, description) {
+  console.log(`Creating deployment for @${versionNumber}`);
   return await script.projects.deployments.create({
       scriptId,
       requestBody: {
@@ -64,15 +68,16 @@ async function gasDeploy(tag, description){
   const { scriptId } = await getProjectSettings();
 
   const versions = await getVersions(scriptId);
-  const latestVersion = versions[0];
-  let curVersion;
+  let curVersion = versions[0];
+  console.log(`The current versions is ${curVersion.versionNumber}`);
 
   // if the major version is higher than current version then make new gas version
-  if (+npmMajor > +latestVersion.versionNumber) {
-    console.log(`A new version @${npmMajor} and description is`,description);
+  if (+npmMajor > +curVersion.versionNumber) {
     curVersion = await createVersion(scriptId, npmMajor, description);
+    console.log('Created new version');
+    console.dir(curVersion);
   } else {
-    curVersion = latestVersion;
+    console.log(`Deploying again to version @${curVersion.versionNumber}`);
   }
 
   const deployment = await createDeployment(scriptId, curVersion.versionNumber, description);

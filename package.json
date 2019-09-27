@@ -1,6 +1,6 @@
 {
   "name": "firebase-gas",
-  "version": "23.0.1",
+  "version": "6.0.1",
   "description": "Firebase API for an Apps Script Project",
   "main": "src/Code.js",
   "types": "type.d.ts",
