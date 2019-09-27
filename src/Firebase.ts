@@ -23,21 +23,31 @@ namespace Firebase {
     }
 
     public firestore(authToken: string | null = null): Firestore.Connection {
-      if (authToken !== null) {
+      if (authToken !== null && this._firestore === null) {
         this._firestore = new Firestore.Connection(authToken, this.projectId);
-      } else {
+      } else if (authToken === null && this._firestore === null) {
         throw new Error("No OAuth token then no Firestore");
       }
-      return this._firestore;
+
+      if (this._firestore instanceof Firestore.Connection) {
+        return this._firestore;
+      } else {
+        throw new Error("Could not get the Firestore");
+      }
     }
 
     public remoteConfig(authToken: string | null = null): RemoteConfig.Connection {
-      if (authToken !== null) {
-        this._remoteConfig = new RemoteConfig.Connection(authToken, this.projectId);
-      } else {
-        throw new Error("No OAuth token then no Remote Config");
+      if (authToken !== null && this._remoteConfig === null) {
+        this._firestore = new Firestore.Connection(authToken, this.projectId);
+      } else if (authToken === null && this._remoteConfig === null) {
+        throw new Error("No OAuth token then no RemoteConfig");
       }
-      return this._remoteConfig;
+
+      if (this._remoteConfig instanceof RemoteConfig.Connection) {
+        return this._remoteConfig;
+      } else {
+        throw new Error("Could not get the RemoteConfig");
+      }
     }
   }
 }
