@@ -1,6 +1,6 @@
 {
   "name": "firebase-gas",
-  "version": "1.0.0",
+  "version": "23.0.0",
   "description": "Firebase API for an Apps Script Project",
   "main": "src/Code.js",
   "types": "type.d.ts",
@@ -9,7 +9,13 @@
     "status": "clasp status",
     "push": "clasp push",
     "watch": "clasp push --watch",
-    "build": "node build.js"
+    "build": "node build/compile.js",
+    "preversion": " ",
+    "postversion": "echo $npm_package_version",
+    "preinstall": "npm config set foo bar",
+    "postinstall": "npm config get foo",
+    "verb": "node build/version.js $TAG_NAME \"$(git tag -l --format='%(contents)' $TAG_NAME)\"",
+    "echo-v": "echo $npm_package_version"
   },
   "author": "Kelly Ferrone",
   "license": "ISC",
