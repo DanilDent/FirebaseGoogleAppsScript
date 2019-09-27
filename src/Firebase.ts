@@ -38,7 +38,7 @@ namespace Firebase {
 
     public remoteConfig(authToken: string | null = null): RemoteConfig.Connection {
       if (authToken !== null && this._remoteConfig === null) {
-        this._firestore = new Firestore.Connection(authToken, this.projectId);
+        this._remoteConfig = new RemoteConfig.Connection(authToken, this.projectId);
       } else if (authToken === null && this._remoteConfig === null) {
         throw new Error("No OAuth token then no RemoteConfig");
       }
