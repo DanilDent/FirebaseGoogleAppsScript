@@ -1,5 +1,5 @@
 {
-  "name": "firebase-google-apps-script",
+  "name": "firebase-gas",
   "version": "1.0.0",
   "description": "Firebase API for an Apps Script Project",
   "main": "src/Code.js",
@@ -8,7 +8,8 @@
     "test": "test",
     "status": "clasp status",
     "push": "clasp push",
-    "watch": "clasp push --watch"
+    "watch": "clasp push --watch",
+    "build": "node build.js"
   },
   "author": "Kelly Ferrone",
   "license": "ISC",

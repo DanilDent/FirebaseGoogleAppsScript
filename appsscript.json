@@ -1,0 +1,14 @@
+{
+  "timeZone": "America/Denver",
+  "dependencies": {
+
+  },
+  "urlFetchWhitelist": [
+    "https://firestore.googleapis.com/v1/projects/",
+    "https://firebaseremoteconfig.googleapis.com/v1/projects/"
+  ],
+  "executionApi": {
+    "access": "ANYONE"
+  },
+  "exceptionLogging": "STACKDRIVER"
+}

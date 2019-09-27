@@ -3,7 +3,9 @@
     "target": "ES5",
     "module": "none",
     "moduleResolution": "node",
-    "strict": true
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
   },
   "compileOnSave": false
 }
