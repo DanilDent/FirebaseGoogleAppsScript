@@ -6,6 +6,6 @@
  * @param {string} projectId the Firestore project ID
  * @return {object} an authenticated interface with a Firestore project
  */
-function getFirebase(email: string, key: string, projectId: string): Firebase.Connection {
-  return new Firebase.Connection(email, key, projectId);
+function getFirebase(projectId: string): Firebase.Connection {
+  return new Firebase.Connection(projectId);
 }
